@@ -5,33 +5,106 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <style>
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{background:#000;height:100vh;display:flex;justify-content:center;align-items:center;overflow:hidden}
-    .grid{width:92vmin;height:92vmin;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr}
-    .sector{position:relative;overflow:hidden;background:#1a1a1a}
-    .overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.7));color:#fff;padding:20px 12px 16px;font-size:17px;font-weight:600;text-align:center;text-decoration:none;z-index:2}
-    .emoji{font-size:28px;margin-bottom:6px}
-    .tl{border-radius:24px 0 0 0}
-    .tr{border-radius:0 24px 0 0}
-    .bl{border-radius:0 0 0 24px}
-    .br{border-radius:0 0 24px 0}
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #000;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Линии-разделители */
+    .divider-h {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 92vmin;
+      height: 1px;
+      background: #333;
+      transform: translateY(-50%);
+      z-index: 10;
+    }
+    .divider-v {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      width: 1px;
+      height: 92vmin;
+      background: #333;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .grid {
+      width: 92vmin;
+      height: 92vmin;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 1px; /* компенсирует линии-разделители, чтобы не было двойного зазора */
+      z-index: 5;
+    }
+
+    .sector {
+      position: relative;
+      overflow: hidden;
+      background: #1a1a1a;
+      border-radius: 20px; /* ← закругление всех углов */
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+    }
+
+    .overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.7));
+      color: #fff;
+      padding: 20px 12px 16px;
+      font-size: 17px;
+      font-weight: 600;
+      text-align: center;
+      text-decoration: none;
+      z-index: 2;
+      transition: background 0.2s;
+    }
+
+    .sector:hover .overlay {
+      background: linear-gradient(transparent, rgba(0,0,0,0.9));
+    }
+
+    .emoji {
+      font-size: 28px;
+      margin-bottom: 6px;
+      display: block;
+    }
   </style>
 </head>
 <body>
+  <!-- Разделители -->
+  <div class="divider-h"></div>
+  <div class="divider-v"></div>
+
   <div class="grid">
-    <div class="sector tl">
+    <div class="sector">
       <a href="interesnoe/" class="overlay"><div class="emoji">🔍</div>Интересное</a>
     </div>
-    <div class="sector tr">
+    <div class="sector">
       <a href="nakipelo/" class="overlay"><div class="emoji">💬</div>Накипело</a>
     </div>
-    <div class="sector bl">
+    <div class="sector">
       <a href="marshruty/" class="overlay"><div class="emoji">🗺</div>Маршруты</a>
     </div>
-    <div class="sector br">
+    <div class="sector">
       <a href="news/" class="overlay"><div class="emoji">📰</div>Новости</a>
     </div>
   </div>
+
   <script>
     Telegram.WebApp.ready();
     Telegram.WebApp.expand();
