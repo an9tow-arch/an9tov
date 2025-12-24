@@ -30,7 +30,7 @@
     </div>
     <div class="sector bl">
       <div class="preview"></div>
-      <a href="Наши маршруты/" class="overlay"><div class="emoji">🗺</div>Маршруты</a>
+      <a href="Маршруты/" class="overlay"><div class="emoji">🗺</div>Маршруты</a>
     </div>
     <div class="sector br">
       <div class="preview"></div>
