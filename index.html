@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0a0a0a;
+      color: #e0e0e0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .hook {
+      padding: 18px 20px 14px;
+      text-align: center;
+      background: rgba(0,0,0,0.3);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #222;
+    }
+    .hook h1 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      background: linear-gradient(90deg, #fff, #aaa);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hook p {
+      font-size: 15px;
+      color: #bbb;
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+    .grid {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 2px;
+      width: 100%;
+      height: 100%;
+    }
+    .btn {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      text-decoration: none;
+      color: white;
+      padding: 20px 12px 26px;
+      background: linear-gradient(145deg, #222, #111);
+      box-shadow: inset 0 -3px 0 rgba(0,0,0,0.3), 0 1px 3px rgba(0,0,0,0.5);
+      transition: all 0.2s;
+    }
+    .btn:active { transform: scale(0.985); }
+    .emoji { font-size: 32px; margin-bottom: 10px; }
+    .label { font-size: 18px; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="hook">
+    <h1>Я не блогер. Я просто записываю, чтобы не забыть — и делюсь</h1>
+    <p>Здесь — заметки, маршруты и мысли без пафоса. Всё проверено дорогой и временем.</p>
+  </div>
+  <div class="grid">
+    <a href="interesnoe.html" class="btn">
+      <div class="emoji">🔍</div>
+      <div class="label">Интересное</div>
+    </a>
+    <a href="nakipelo.html" class="btn">
+      <div class="emoji">💬</div>
+      <div class="label">Накипело</div>
+    </a>
+    <a href="marshruty.html" class="btn">
+      <div class="emoji">🗺</div>
+      <div class="label">Маршруты</div>
+    </a>
+    <a href="news.html" class="btn">
+      <div class="emoji">📰</div>
+      <div class="label">Новости</div>
+    </a>
+  </div>
+  <script>
+    Telegram.WebApp.ready();
+    Telegram.WebApp.expand();
+    Telegram.WebApp.disableVerticalSwipes();
+  </script>
+</body>
+</html>
