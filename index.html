@@ -7,102 +7,118 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      background: #000;
+      background: #0a0a0a;
+      color: #e0e0e0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       height: 100vh;
       display: flex;
-      justify-content: center;
-      align-items: center;
+      flex-direction: column;
       overflow: hidden;
-      position: relative;
     }
 
-    /* Линии-разделители */
-    .divider-h {
-      position: absolute;
-      top: 50%;
-      left: 0;
-      width: 92vmin;
-      height: 1px;
-      background: #333;
-      transform: translateY(-50%);
-      z-index: 10;
-    }
-    .divider-v {
-      position: absolute;
-      left: 50%;
-      top: 0;
-      width: 1px;
-      height: 92vmin;
-      background: #333;
-      transform: translateX(-50%);
-      z-index: 10;
-    }
-
-    .grid {
-      width: 92vmin;
-      height: 92vmin;
+    /* ——— 3D-кнопки (вверху) ——— */
+    .menu {
+      padding: 16px 12px 12px;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
-      gap: 1px; /* компенсирует линии-разделители, чтобы не было двойного зазора */
-      z-index: 5;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      z-index: 10;
     }
 
-    .sector {
+    .btn {
+      height: 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: white;
+      border-radius: 16px;
+      font-weight: 600;
+      font-size: 14px;
+      text-align: center;
+      transition: all 0.2s;
       position: relative;
       overflow: hidden;
-      background: #1a1a1a;
-      border-radius: 20px; /* ← закругление всех углов */
-      display: flex;
-      justify-content: center;
-      align-items: flex-end;
+      background: linear-gradient(145deg, #2c2c2c, #1a1a1a);
+      box-shadow:
+        0 4px 0 #0d0d0d,        /* «толкатель» — создаёт 3D-эффект */
+        0 6px 12px rgba(0,0,0,0.5);
     }
 
-    .overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(transparent, rgba(0,0,0,0.7));
+    .btn:active {
+      transform: translateY(4px);
+      box-shadow: 0 0 0 #0d0d0d, 0 2px 6px rgba(0,0,0,0.3);
+    }
+
+    .btn .emoji {
+      font-size: 24px;
+      margin-bottom: 4px;
+    }
+
+    /* ——— Контент-блок (внизу) ——— */
+    .content {
+      flex: 1;
+      padding: 20px 16px;
+      overflow-y: auto;
+      background: #0e0e0e;
+      border-top: 1px solid #222;
+    }
+
+    .content h2 {
+      font-size: 20px;
+      margin-bottom: 16px;
       color: #fff;
-      padding: 20px 12px 16px;
-      font-size: 17px;
-      font-weight: 600;
-      text-align: center;
-      text-decoration: none;
-      z-index: 2;
-      transition: background 0.2s;
     }
 
-    .sector:hover .overlay {
-      background: linear-gradient(transparent, rgba(0,0,0,0.9));
+    .content p {
+      line-height: 1.6;
+      margin-bottom: 12px;
+      color: #bbb;
     }
 
-    .emoji {
-      font-size: 28px;
-      margin-bottom: 6px;
-      display: block;
+    .content img {
+      max-width: 100%;
+      border-radius: 12px;
+      margin: 12px 0;
+    }
+
+    /* ——— Адаптив ——— */
+    @media (max-width: 600px) {
+      .menu { gap: 8px; padding: 12px 8px 8px; }
+      .btn { height: 52px; font-size: 13px; }
+      .btn .emoji { font-size: 20px; }
     }
   </style>
 </head>
 <body>
-  <!-- Разделители -->
-  <div class="divider-h"></div>
-  <div class="divider-v"></div>
+  <!-- Меню (вверху) -->
+  <div class="menu">
+    <a href="interesnoe/" class="btn">
+      <div class="emoji">🔍</div>
+      Интересное
+    </a>
+    <a href="nakipelo/" class="btn">
+      <div class="emoji">💬</div>
+      Накипело
+    </a>
+    <a href="marshruty/" class="btn">
+      <div class="emoji">🗺</div>
+      Маршруты
+    </a>
+    <a href="news/" class="btn">
+      <div class="emoji">📰</div>
+      Новости
+    </a>
+  </div>
 
-  <div class="grid">
-    <div class="sector">
-      <a href="interesnoe/" class="overlay"><div class="emoji">🔍</div>Интересное</a>
-    </div>
-    <div class="sector">
-      <a href="nakipelo/" class="overlay"><div class="emoji">💬</div>Накипело</a>
-    </div>
-    <div class="sector">
-      <a href="marshruty/" class="overlay"><div class="emoji">🗺</div>Маршруты</a>
-    </div>
-    <div class="sector">
-      <a href="news/" class="overlay"><div class="emoji">📰</div>Новости</a>
-    </div>
+  <!-- Контент (внизу) -->
+  <div class="content">
+    <h2>👋 Добро пожаловать в an9tov</h2>
+    <p>Здесь — самое свежее и интересное: от личных заметок до географии приключений.</p>
+    <p>Нажмите на любую кнопку вверху — и погрузитесь в тему.</p>
+    <!-- Сюда можно вставлять любой HTML: -->
+    <!-- <div>Ваш текст, фото, iframe, видео и т.д.</div> -->
   </div>
 
   <script>
